@@ -1,5 +1,7 @@
 const express = require("express");
 
+const port = 3000;
+
 // create a server
 const app = express();
 
@@ -7,8 +9,11 @@ const app = express();
 flavours = ["vanilla", "chocolate", "lemon"];
 
 app.get("/", (request, response) => {
-    const messages = flavours.map((flavour) => `I like ${flavour}`);
-    response.send(messages);
+    console.log('I got a request');
+    response.send(flavours[1]);
 });
 
-app.listen(3000);
+
+
+
+app.listen(port);

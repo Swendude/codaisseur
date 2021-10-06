@@ -1,21 +1,33 @@
-const axios = require('axios');
+const teachers = require('./teacher')
+
+console.log(`${teachers} is a teacher`);
+
+// // // console.log(JSON.stringify({name:'Karla', teaching:true})); // serializing
 
 
 
-async function requestLocal() {
-    console.log('async version: enter');
-    const response = await axios.get('http://localhost:3000');
-    console.log(response.data);
-    console.log('async version: exit');
-}
+// const axios = require('axios')
 
-function requestLocal_() {
-    console.log('sync version: enter');
-    const res = axios.get('http://localhost:3000');
-    console.log(res);
-    console.log('sync version: exit');
-}
+// async function getTeachers () {
+//     try {
+//         const response = await axios.get('http://localhost:3000/teachers');
+//         const teachers = response.data;
+//         console.log(teachers[0].name);
+//     } catch (error) {
+//         console.log('error:', error.message);
+//     }
+  
+// }
 
-requestLocal();
+// getTeachers();
 
-requestLocal_();
+// // const languages = {spain: 'Spanish',
+// // france: 'French',
+// // germany: 'German'
+// // }
+
+// // const json = JSON.stringify(languages)
+
+// // const data = JSON.parse(json)
+
+// // console.log(data.france)
