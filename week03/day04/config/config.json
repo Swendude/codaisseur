@@ -1,0 +1,5 @@
+{
+  "development": {
+    "url": "postgres://mqhwarug:G3axWdsROwg7QOHQkSUaYlOEfdNlIic6@tai.db.elephantsql.com/mqhwarug"
+  }
+}
