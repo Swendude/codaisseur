@@ -1,33 +1,27 @@
-const teachers = require('./teacher')
+const axios = require("axios");
+const animals = require("animals.json");
 
-console.log(`${teachers} is a teacher`);
+async function getFlavours() {
+  try {
+    const response = await axios.get(`http://localhost`); // Problem: this is no done yet
+    const client_flavours = response.data;
+    
+  } catch (error) {
+    console.log("We got an error!");
+    console.log(error.code);
+  }
+}
+getFlavours();
 
-// // // console.log(JSON.stringify({name:'Karla', teaching:true})); // serializing
-
-
-
-// const axios = require('axios')
-
-// async function getTeachers () {
-//     try {
-//         const response = await axios.get('http://localhost:3000/teachers');
-//         const teachers = response.data;
-//         console.log(teachers[0].name);
-//     } catch (error) {
-//         console.log('error:', error.message);
-//     }
-  
+// async function getFlavour(id) {
+//   try {
+//     const response = await axios.get(`http://localhost:3000/flavours/${id}`); // Problem: this is no done yet
+//     console.log(response.data);
+//   } catch (error) {
+//     console.log("We got an error!");
+//     console.log(error.code);
+//   }
 // }
-
-// getTeachers();
-
-// // const languages = {spain: 'Spanish',
-// // france: 'French',
-// // germany: 'German'
-// // }
-
-// // const json = JSON.stringify(languages)
-
-// // const data = JSON.parse(json)
-
-// // console.log(data.france)
+// getFlavour(0);
+// getFlavour(1);
+// getFlavour(2);
