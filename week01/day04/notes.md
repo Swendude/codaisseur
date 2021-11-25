@@ -1,7 +1,5 @@
 # Reader content
 
-- REVIEW: Arrays
-- REVIEW: map
 - REVIEW: Express
 
 - Axios
@@ -10,8 +8,6 @@
   - Serializing, parsing
 - APIs
   - JSON + Axios
-- BONUS: Object to array
-
 # Lecture notes
 
 - Introduction
