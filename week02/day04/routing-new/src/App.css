@@ -16,3 +16,11 @@
 a {
     color: #61dafb;
 }
+
+.title {
+    color: red;
+}
+
+a.active {
+    font-weight: bold;
+}
