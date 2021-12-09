@@ -1,10 +1,12 @@
 const express = require("express");
 const { pet } = require("../models");
+const AuthMiddleware = require("../auth/middleware");
 const { Router } = express;
 
 const router = new Router();
+// router.use(AuthMiddleware);
 
-router.get("/", async(req, res) => {
+router.get("/", AuthMiddleware, async(req, res) => {
     const pets = await pet.findAll();
     res.send(pets);
 });
