@@ -16,3 +16,5 @@
         - Receive the token with a request and check it in the route
 - Hashing
 - Patch/Put & Post (pets)
+
+- request ("/users/1) -> middleware -> middleware -> route -> response("something")
