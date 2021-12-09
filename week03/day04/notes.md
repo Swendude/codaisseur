@@ -18,3 +18,35 @@
 - Patch/Put & Post (pets)
 
 - request ("/users/1) -> middleware -> middleware -> route -> response("something")
+
+
+Hash function:
+Input: 'swen'
+Output: 'sdpoqeu093ue0823uf023490r47'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
