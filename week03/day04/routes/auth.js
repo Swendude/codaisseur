@@ -1,29 +1,21 @@
-const { Router } = require("express");
-const { toJWT, toData } = require("../auth/jwt");
-const { owner } = require("../models");
-const bcrypt = require('bcrypt');
+const { Router } = require("express")
+const owner = require("../models").owner;
 const router = new Router();
 
+router.post("/login", async(req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+    if (!email || !password) {
+        res.status(400).send('No email or password provided')
+    }
+    const auth_owner = await owner.findAll({
+        where: { email: email, password: password }
+    })
+    if (auth_owner.length === 0) {
+        res.status(400).send('No owner found')
+    } else {
+        res.send('Here is a token!')
+    }
+})
 
-
-
-
-
-
-// module.exports = router;
-
-// console.log('auth!')
-//   console.log(req.body);
-//   if (!req.body.email || req.body.email === "") {
-//     res.status(400).send('Missing email or password');
-//   }
-//   else if (!req.body.password || req.body.password === "") {
-//     res.status(400).send('Missing email or password');
-//   }
-//   const auth_owner = await owner.findAll({where:
-//     {email:req.body.email}});
-//   if (auth_owner.length === 0) {
-//     res.status(400).send('No user with that passowrd or email exists');
-//   }
-//   else {
-//     res.send({jwt: toJWT({userId: auth_owner.id})});
+module.exports = router;
