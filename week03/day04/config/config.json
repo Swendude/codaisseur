@@ -1,5 +1,5 @@
 {
-  "development": {
-    "url": "postgres://mqhwarug:G3axWdsROwg7QOHQkSUaYlOEfdNlIic6@tai.db.elephantsql.com/mqhwarug"
-  }
+    "development": {
+        "url": "postgres://mxquyavu:rrp1m1V33cCVDfBzilMMMrGZL2w_svsz@tai.db.elephantsql.com/mxquyavu"
+    }
 }
