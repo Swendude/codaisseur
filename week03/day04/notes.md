@@ -1,6 +1,4 @@
-Friday challenge
-- Join us on site!
-
+# Friday challenge
 - required features:
     - npm scripts
     - create models (3)
@@ -9,6 +7,10 @@ Friday challenge
     - seeds (for all models)
     - 4 endpoints (2 GET, 1 POST, 1 PUT/PATCH)
 
-- Middlewares
+# Todays lecture
+
 - Tokens
+    - Create a post ("/login") route that returns a token
+    - Check for token in requests
 - Hashing
+- Patch/Put & Post (pets)

@@ -5,20 +5,16 @@ const { Router } = express;
 const router = new Router();
 
 router.get("/", async(req, res) => {
-    const owners = await pet.findAll();
-    res.send(owners);
+    const pets = await pet.findAll();
+    res.send(pets);
 });
 
 router.get("/:id", async(req, res) => {
-    const owners = await pet.findAll({
-        where: {
-            id: req.params.id,
-        },
-    });
-    if (!owners.length) {
+    const pet_by_pk = await pet.findByPk(req.params.id);
+    if (pet_by_pk == null) {
         res.status(404).send(`Pet with ID ${req.params.id} does not exist`);
     }
-    res.send(owners[0]);
+    res.send(pet_by_pk);
 });
 
 module.exports = router;
