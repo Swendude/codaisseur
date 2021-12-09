@@ -10,7 +10,9 @@
 # Todays lecture
 
 - Tokens
-    - Create a post ("/login") route that returns a token
-    - Check for token in requests
+    - Show our credentials (username & password) and get a keycard (token)
+        - POST username & password and get token
+    - find a way to check the token (validate)
+        - Receive the token with a request and check it in the route
 - Hashing
 - Patch/Put & Post (pets)
