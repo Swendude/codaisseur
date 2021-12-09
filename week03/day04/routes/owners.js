@@ -1,6 +1,5 @@
-const express = require("express");
+const { Router } = require("express");
 const { owner } = require("../models");
-const { Router } = express;
 const bcrypt = require('bcrypt');
 const router = new Router();
 
