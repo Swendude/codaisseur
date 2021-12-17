@@ -1,0 +1,6 @@
+Endgoal: Login/To be authenticated
+- We need a form to login (login component) x
+- store the token in a redux store x
+    - We need a thunk that gets the token and dispatches it to the store
+    - Our thunk needs parameters (email and password)
+- Get the information about the current user (to check) x

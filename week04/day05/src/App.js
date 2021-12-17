@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
-import Loginpage from './pages/Loginpage';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import {checkTokenOnRefresh} from './store/auth/actions';
+import LoginPage from "./pages/LoginPage";
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(checkTokenOnRefresh);
-  }, [])
-
   return (
     <div className="App">
-      <a href='/'>Home</a>
-      <a href='/login'>Login</a>
+      <div>
+        <a href="/">Home</a>
+        <br/>
+        <a href="/login">Login</a>
+      </div>
       <Switch>
         <Route exact path="/" component={Homepage} />
-        <Route exact path="/login" component={Loginpage} />
+        <Route path="/login" component={LoginPage} />
       </Switch>
     </div>
   );
