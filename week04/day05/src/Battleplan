@@ -4,3 +4,7 @@ Endgoal: Login/To be authenticated
     - We need a thunk that gets the token and dispatches it to the store
     - Our thunk needs parameters (email and password)
 - Get the information about the current user (to check) x
+
+Endgoal: Keep the user logged in after a refresh
+- Store our token in localstorage when we get it x
+- On a page refresh, use token to get user info
