@@ -1,32 +1,44 @@
-const { Router } = require("express")
-const owner = require("../models").owner;
+const { Router } = require("express");
+const { owner } = require("../models");
+const { toJWT, toData } = require("../Auth/jwt");
+
 const router = new Router();
-const { toJWT } = require("../auth/jwt");
-const bcrypt = require('bcrypt');
 
-router.post("/login", async(req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
-    if (!email || !password) {
-        res.status(400).send('No email or password provided')
-    }
-    const auth_owner = await owner.findAll({
-        where: { email: email }
-    })
-    if (auth_owner.length === 0) {
-        res.status(400).send('No owner found')
+router.post("/login", async (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  if (!email || !password) {
+    res.status(400).send("no email or password provided");
+  } else {
+    const auth_owner = await owner.findOne({
+      where: { email: email },
+    });
+
+    if (!auth_owner) {
+      res.status(400).send("User not found");
     } else {
-        //This is the user that we want to generate a keycard for
-        const auth_user = auth_owner[0];
-        const hashed_pw = auth_user.password;
-        if (bcrypt.compareSync(password, hashed_pw)) {
-            const keycard = toJWT({ ownerId: auth_user.id });
-            res.send(keycard);
-        } else {
-            res.status(400).send('No owner found')
-        }
-
+      if (auth_owner.password === password) {
+        const keycard = toJWT({
+          ownerId: auth_owner.id,
+        });
+        res.send(keycard);
+      } else {
+        res.send("Everything is not cool");
+      }
     }
-})
+  }
+});
+
+router.get("/show-token", async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const data = toData(token);
+  const token_owner = await owner.findByPk(data.ownerId);
+  if (token_owner.id === 1) {
+    res.send(token_owner);
+  } else {
+    res.send("This owner does not have rights");
+  }
+});
 
 module.exports = router;
