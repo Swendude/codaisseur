@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const { owner } = require("../models");
 const { toJWT, toData } = require("../Auth/jwt");
+const bcrypt = require("bcrypt");
 
 const router = new Router();
 
@@ -18,9 +19,10 @@ router.post("/login", async (req, res) => {
     if (!auth_owner) {
       res.status(400).send("User not found");
     } else {
-      if (auth_owner.password === password) {
+      if (bcrypt.compareSync(password, auth_owner.password)) {
         const keycard = toJWT({
           ownerId: auth_owner.id,
+          ownerName: auth_owner.name,
         });
         res.send(keycard);
       } else {
@@ -35,7 +37,7 @@ router.get("/show-token", async (req, res) => {
   const data = toData(token);
   const token_owner = await owner.findByPk(data.ownerId);
   if (token_owner.id === 1) {
-    res.send(token_owner);
+    res.send(data);
   } else {
     res.send("This owner does not have rights");
   }
