@@ -1,11 +1,15 @@
 const express = require("express");
 const { pet } = require("../models");
 const { Router } = express;
-
+const authMiddleware = require("../Auth/middleware");
+const e = require("express");
 const router = new Router();
 
-router.get("/", async (req, res) => {
-  const pets = await pet.findAll();
+router.get("/", authMiddleware, async (req, res) => {
+  // HERE WE GET OUT THE ID OF THE USER THAT MADE THE TOKEN
+  const logged_in_user = req.auth_id;
+  // use this id to select pets
+  const pets = await pet.findAll({ where: { ownerId: logged_in_user } });
   res.send(pets);
 });
 
@@ -15,6 +19,35 @@ router.get("/:id", async (req, res) => {
     res.status(404).send(`Pet with ID ${req.params.id} does not exist`);
   }
   res.send(pet_by_pk);
+});
+
+router.patch("/:id", async (req, res) => {
+  const pet_by_pk = await pet.findByPk(req.params.id);
+  if (!pet_by_pk) {
+    res.status(404).send(`Pet with ID ${req.params.id} does not exist`);
+  } else {
+    const new_name = req.body.name;
+    const new_kind = req.body.kind;
+    if (new_name || new_kind) {
+      await pet_by_pk.update({
+        name: new_name || pet_by_pk.name,
+        kind: new_kind || pet_by_pk.kind,
+      });
+      res.send(pet_by_pk);
+    } else {
+      res.status(400).send("Please provide either kind or name");
+    }
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  const pet_by_pk = await pet.findByPk(req.params.id);
+  if (!pet_by_pk) {
+    res.status(404).send(`Pet with ID ${req.params.id} does not exist`);
+  } else {
+    await pet_by_pk.destroy();
+    res.send("Pet was destroyed");
+  }
 });
 
 // router.get("/kind/:kindname", async (req, res) => {

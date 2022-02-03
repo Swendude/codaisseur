@@ -1,6 +1,6 @@
 "use strict";
 const bcrypt = require("bcrypt");
-
+const { owner } = require("../models");
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     /**
@@ -16,7 +16,6 @@ module.exports = {
       "owners",
       [
         {
-          id: 1,
           name: "John Doe",
           age: 42,
           password: bcrypt.hashSync("John123", 10),
@@ -25,7 +24,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          id: 2,
           name: "Jane Doe",
           age: 45,
           password: bcrypt.hashSync("Janejane", 10),
@@ -36,32 +34,29 @@ module.exports = {
       ],
       {}
     );
-
+    const all_owners = await owner.findAll();
     // query all the users and pick from them
     await queryInterface.bulkInsert(
       "pets",
       [
         {
-          id: 1,
           name: "Wanda",
           kind: "fish",
-          ownerId: 1,
+          ownerId: all_owners[0].id,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          id: 2,
           name: "Tom",
           kind: "cat",
-          ownerId: 1,
+          ownerId: all_owners[1].id,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          id: 3,
           name: "Scooby-Doo",
           kind: "dog",
-          ownerId: 2,
+          ownerId: all_owners[0].id,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
