@@ -1,11 +1,4 @@
 import { combineReducers } from "redux";
 
-import postsReducer from "./postsFeed/reducer";
-import authReducer from "./auth/reducer";
-
-const reducer = combineReducers({
-    posts: postsReducer,
-    auth: authReducer
-});
-
+const reducer = combineReducers({});
 export default reducer;

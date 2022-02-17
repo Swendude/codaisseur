@@ -1,21 +1,18 @@
-import "./App.css";
-import { Routes, Route, NavLink } from "react-router-dom";
-import Homepage from "./pages/Homepage";
-// import Loginpage from "./pages/Loginpage";
 import { useState } from "react";
-
-function App() {
+import { useDispatch } from "react-redux";
+import { loginThunk } from "../store/auth/actions";
+const Loginpage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(email, password);
+    dispatch(loginThunk(email, password));
   };
   return (
-    <div className="App">
-      <h1>Login</h1>
-      {/* <form onSubmit={handleSubmit}>
+    <div>
+      <form onSubmit={handleSubmit}>
         <p>
           <label>Email:</label>
           <input
@@ -35,12 +32,9 @@ function App() {
         <p>
           <button type="submit">Login</button>
         </p>
-      </form> */}
-      <Routes>
-        <Route path="/" element={<h1>Hello world</h1>} />
-      </Routes>
+      </form>
     </div>
   );
-}
+};
 
-export default App;
+export default Loginpage;
