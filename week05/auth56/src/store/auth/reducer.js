@@ -1,6 +1,11 @@
 const initialState = {
   token: null,
   me: null,
+  pets: [
+    { species: "cow", age: 10 },
+    { species: "sheep", age: 2 },
+    { species: "monkey", age: 14 },
+  ],
 };
 
 export default function reducer(state = initialState, action) {
