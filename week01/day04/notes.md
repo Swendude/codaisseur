@@ -1,13 +1,11 @@
 # Reader content
 
-- REVIEW: Express
-
 - Axios
   - Promises, Async/Await, Try/Catch
-- JSON
-  - Serializing, parsing
 - APIs
   - JSON + Axios
+- JSON
+  - Serializing, parsing
 # Lecture notes
 
 - Introduction
