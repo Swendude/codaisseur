@@ -1,9 +1,4 @@
-[
-  { "name": "fifi", "type": "dog", "id": 3, "owned": true },
-  { "name": "clara", "type": "cow", "id": 4, "owned": false },
-  { "name": "wanda", "type": "fish", "id": 6, "owned": true },
-  { "name": "cleo", "type": "fish", "id": 7, "owned": true },
-  { "name": "babe", "type": "pig", "id": 1, "owned": true },
-  { "name": "tom", "type": "cat", "id": 2, "owned": false },
-  { "name": "george", "type": "mouse", "id": 5, "owned": false }
-]
+{
+  "fifi": { "type": "dog", "id": 3 },
+  "clara": { "type": "cow", "id": 4 }
+}

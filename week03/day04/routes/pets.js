@@ -1,15 +1,13 @@
 const express = require("express");
 const { pet } = require("../models");
 const { Router } = express;
-const authMiddleware = require("../Auth/middleware");
-const e = require("express");
+const authMiddleware = require("../auth/middleware");
+
 const router = new Router();
 
 router.get("/", authMiddleware, async (req, res) => {
-  // HERE WE GET OUT THE ID OF THE USER THAT MADE THE TOKEN
-  const logged_in_user = req.auth_id;
-  // use this id to select pets
-  const pets = await pet.findAll({ where: { ownerId: logged_in_user } });
+  const auth_ownerId = req.ownerId;
+  const pets = await pet.findAll({ where: { ownerId: auth_ownerId } });
   res.send(pets);
 });
 

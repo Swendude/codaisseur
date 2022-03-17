@@ -1,3 +1,11 @@
-Banana -> Peeling -> Cleaning -> Jam
+Input: Bananas
 
-Request -> MW1 -> MW2 -> Output (response)
+Peel -> Clean -> Mash -> Boil ->
+
+Output: Banana Jam
+
+Input: Request
+
+LogginMiddleware -> AuthMiddleware -> Route -> ErrorMiddleware
+
+Output: Response

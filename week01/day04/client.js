@@ -3,7 +3,7 @@ const axios = require("axios");
 const getAnimals = async () => {
   try {
     const response = await axios.get("http://localhost:5065/animals");
-    console.log(response.data);
+    console.log(response);
   } catch (error) {
     console.log(error.message);
   }

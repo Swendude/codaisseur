@@ -1,45 +1,28 @@
 const { Router } = require("express");
 const { owner } = require("../models");
-const { toJWT, toData } = require("../Auth/jwt");
-const bcrypt = require("bcrypt");
-
+const { toJWT } = require("../auth/jwt");
 const router = new Router();
 
 router.post("/login", async (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-
+  const { email, password } = req.body;
   if (!email || !password) {
-    res.status(400).send("no email or password provided");
+    res.status(400).send("Please provide a email and password");
   } else {
     const auth_owner = await owner.findOne({
       where: { email: email },
     });
-
     if (!auth_owner) {
       res.status(400).send("User not found");
     } else {
-      if (bcrypt.compareSync(password, auth_owner.password)) {
-        const keycard = toJWT({
+      if (password === auth_owner.password) {
+        const token = toJWT({
           ownerId: auth_owner.id,
-          ownerName: auth_owner.name,
         });
-        res.send(keycard);
+        res.send({ token });
       } else {
-        res.send("Everything is not cool");
+        res.send("Password not correct");
       }
     }
-  }
-});
-
-router.get("/show-token", async (req, res) => {
-  const token = req.headers.authorization.split(" ")[1];
-  const data = toData(token);
-  const token_owner = await owner.findByPk(data.ownerId);
-  if (token_owner.id === 1) {
-    res.send(data);
-  } else {
-    res.send("This owner does not have rights");
   }
 });
 
