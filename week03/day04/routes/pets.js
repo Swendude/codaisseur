@@ -55,22 +55,24 @@ router.delete("/:id", async (req, res) => {
 //   res.send(pets_by_kind);
 // });
 
-// router.post("/", async (req, res) => {
-//   try {
-//     const { name, kind, ownerId } = req.body;
-//     if (!name || !kind || !ownerId) {
-//       res.status(400).send("not enough information provided");
-//     }
-//     const new_pet = await pet.create({
-//       name: name,
-//       kind: kind,
-//       ownerId: ownerId,
-//     });
-//     res.send(new_pet);
-//   } catch (error) {
-//     res.send("Something went wrong");
-//   }
-// });
+router.post("/", authMiddleware, async (req, res) => {
+  try {
+    const { name, kind } = req.body;
+    const ownerId = req.ownerId;
+    if (!name || !kind) {
+      res.status(400).send("not enough information provided");
+      return;
+    }
+    const new_pet = await pet.create({
+      name: name,
+      kind: kind,
+      ownerId: ownerId,
+    });
+    res.send(new_pet);
+  } catch (error) {
+    res.send("Something went wrong");
+  }
+});
 
 // router.patch("/:id", async (req, res) => {
 //   try {

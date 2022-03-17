@@ -18,7 +18,7 @@ module.exports = {
         {
           name: "John Doe",
           age: 42,
-          password: "John123",
+          password: bcrypt.hashSync("John123", 10),
           email: "john@doe.com",
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -26,7 +26,7 @@ module.exports = {
         {
           name: "Jane Doe",
           age: 45,
-          password: "Janejane",
+          password: bcrypt.hashSync("Janejane", 10),
           email: "jane@doe.com",
           createdAt: new Date(),
           updatedAt: new Date(),
