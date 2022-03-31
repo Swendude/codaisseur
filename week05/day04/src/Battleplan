@@ -7,3 +7,8 @@ Endgame: have a token in our app (probably in the store)
 - Store it in the store X
 - Get the user information using '/me'
 - Make authenticated request by putting the token in the header
+
+Goal: Save the token in the browser and use it to authenticate the user on a refresh
+- In your login action save the token to the localstorage X
+- Get the token out of localstorage (on first render)  X
+- Do a request with the token to /me X

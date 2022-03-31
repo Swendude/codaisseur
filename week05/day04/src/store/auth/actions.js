@@ -11,6 +11,30 @@ const meReceived = (me) => ({
   payload: { me: me },
 });
 
+const clearToken = {
+  type: "AUTH/clearToken",
+};
+
+const bootstrapLoginThunk = async (dispatch, getState) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    dispatch(tokenReceived(token));
+    try {
+      // use the token to get /me
+      const meResponse = await axios.get(`${API_URL}/me`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const me = meResponse.data;
+      dispatch(meReceived(me));
+    } catch (error) {
+      console.log("Something went wrong", error);
+      dispatch(clearToken);
+    }
+  }
+};
+
 const loginThunk = (email, password) => {
   return async (dispatch, getState) => {
     try {
@@ -20,6 +44,7 @@ const loginThunk = (email, password) => {
         password: password,
       });
       const token = loginResponse.data.jwt;
+      localStorage.setItem("token", token);
       dispatch(tokenReceived(token));
 
       // use the token to get /me
@@ -37,4 +62,4 @@ const loginThunk = (email, password) => {
   };
 };
 
-export { loginThunk };
+export { loginThunk, bootstrapLoginThunk };
