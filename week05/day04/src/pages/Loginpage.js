@@ -1,48 +1,41 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginThunk, logout } from "../store/auth/actions";
-import { meSelector } from "../store/auth/selectors";
+import { loginThunk } from "../store/auth/actions";
+import { selectToken, selectMe } from "../store/auth/selectors";
 
 const Loginpage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
-  const me = useSelector(meSelector);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const dispatch = useDispatch();
+  const token = useSelector(selectToken);
+  const me = useSelector(selectMe);
+  const handleClick = () => {
     dispatch(loginThunk(email, password));
   };
+
   return (
     <div>
-      {!me ? (
-        <div>
-          <form onSubmit={handleSubmit}>
-            <p>
-              <label>Email:</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </p>
-            <p>
-              <label>Password:</label>
-              <input
-                type="text"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </p>
-            <p>
-              <button type="submit">Login</button>
-            </p>
-          </form>
-        </div>
+      <h1>Hello Login</h1>
+      {me ? (
+        <p>You are logged in! Welcome {me.name}</p>
       ) : (
         <div>
-          <p>{`Hello ${me.name}`}</p>
-          <button onClick={(e) => dispatch(logout())}>Logout</button>
+          <label>email</label>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <br />
+          <label>password</label>
+          <input
+            type="text"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br />
+          <button onClick={handleClick}>login!</button>
         </div>
       )}
     </div>
