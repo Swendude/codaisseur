@@ -1,0 +1,23 @@
+Battleplan
+Endgoal: to be able to authenticate
+- Figure out which endpoints we should use x
+- We need an interface (login component) x
+- Create a store and reducer to store the tokens x
+- We have to create our actions
+    - Action: send token to store
+    - Thunk: send our email/password to the API and then send the token to store using action above
+
+
+Bootstrapping login battleplan:
+- On a page refresh, dispatch a thunk that willx
+    - Check if the token is in local storagex
+        - If it is, use that to call /me and store it in the global statex
+        - If it is not, just show loginx
+
+
+Redux general battleplan:
+- Start with initial state
+- Make the reducer
+- Create your actions
+- In components and start dispatching
+- At some point you should be probably use a selector%
