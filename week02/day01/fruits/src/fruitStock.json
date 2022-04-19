@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Bananas",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg",
+    "description": "Sweet yellow fruit"
+  },
+  {
+    "name": "Peaches",
+    "image": "https://static.libertyprim.com/files/familles/peche-large.jpg?1574630286",
+    "description": "Sweet pink fruit"
+  },
+  {
+    "name": "Pineapples",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/74/%E0%B4%95%E0%B5%88%E0%B4%A4%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B4%95%E0%B5%8D%E0%B4%95.jpg",
+    "description": "Don't put it on pizza"
+  },
+  {
+    "name": "Avocado",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/74/%E0%B4%95%E0%B5%88%E0%B4%A4%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B4%95%E0%B5%8D%E0%B4%95.jpg",
+    "description": "Super expensive"
+  }
+]
