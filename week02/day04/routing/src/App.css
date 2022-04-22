@@ -1,5 +1,15 @@
+.redText {
+  color: red;
+  font-weight: bold;
+}
+
+body {
+  background-color: magenta;
+}
+
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
