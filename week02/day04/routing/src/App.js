@@ -16,12 +16,6 @@ function App() {
         <li>
           <Link to="/about">About</Link>
         </li>
-        <li>
-          <Link to="/greeting/naomi/laurens">Greeting Naomi</Link>
-        </li>
-        <li>
-          <Link to="/greeting/wilson/armand">Greeting Wilson</Link>
-        </li>
       </ul>
       <Routes>
         <Route path="/" element={<HomePage />} />
