@@ -29,6 +29,14 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: "Jooy",
+        kind: "Turtle",
+        food: 1,
+        gender: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
         name: "Fido",
         kind: "Bird",
         food: 1,
