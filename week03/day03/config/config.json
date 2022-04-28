@@ -1,0 +1,6 @@
+{
+  "development": {
+    "url": "postgres://teeoetes:eLzqtDi8Ck3Ts1UNMEukzu_T4u2sDOMI@tai.db.elephantsql.com/teeoetes",
+    "dialect": "postgres"
+  }
+}

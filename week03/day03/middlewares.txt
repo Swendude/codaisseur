@@ -1,0 +1,25 @@
+- Chocolate factory
+
+Input: Cocoa nuts, milk 
+    V
+Cocoa cleaning machine -> (error)
+    V
+Extra step: Boil the cocoa nuts > Add the milk > Shape it into a bar 
+    V
+Crunch the Cocoa -> (error)
+    V
+Shape it into a bar -> (error)
+    V
+Output: Chocolate
+
+- Express
+Input: HTTP request
+    V
+    TimeLoggingMiddleWare > Response
+    V
+    SayHelloMiddleWare > Reponse
+    V 
+    Routes (you write them)
+    app.get(req,res => console.log(Data.now())) > Response    
+    V
+Output: HTTP response
