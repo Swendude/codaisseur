@@ -19,7 +19,9 @@ const Counter = () => {
         onChange={(event) => setInput(event.target.value)}
         value={getInput}
       ></input>
-      <button onClick={() => dispatch(setValue(getInput))}>Set value</button>
+      <button onClick={() => dispatch(setValue(parseInt(getInput)))}>
+        Set value
+      </button>
     </div>
   );
 };
