@@ -1,22 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { value: 0, username: "swen" };
+const initialState = { value: 0 };
 
 export const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    increase: (state) => {
-      console.log("Got the increase action");
-      state.value = state.value + 1;
+    change: (state, action) => {
+      state.value = state.value + action.payload;
     },
-    decrease: (state) => {
-      console.log("Got the decrease action");
-      state.value = state.value - 1;
+
+    setValue: (state, action) => {
+      state.value = action.payload;
     },
   },
 });
 
-export const { increase, decrease } = counterSlice.actions;
+export const { change, setValue } = counterSlice.actions;
 
 export default counterSlice.reducer;
