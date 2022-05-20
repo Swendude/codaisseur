@@ -1,16 +1,25 @@
-// DEBUGGING
-// syntax error (easy) - we will get an error message
-// type error (medium) - we will get an error message
-// reference errors (easy) - we will get an error message
-// logic errors (hard)
-const axios = require("axios");
-const getCDSR = async () => {
-  try {
-    const res = await axios.get("http:///www.codaisseur.com");
-    console.log(res.data);
-  } catch (error) {
-    console.log("error: ", error.message);
-  }
-};
+// Syntax error: When you type something that is not expected (structure error)
+// WE LIKE SYNTAX ERRORS
+// Reference error: When you assume you declared something
+// Type errors: When something is not the correct type
 
-getCDSR();
+const DEBUG = false;
+
+const zero = 0;
+if (DEBUG) console.log("Zero equals ", zero);
+
+const result = 4 / zero;
+
+if (DEBUG) console.log("Result equals ", result);
+
+// let done = false;
+// while (!done) {
+//   console.log("still running");
+// }
+// const funcs = require("./funcs");
+
+// console.log(funcs.double(5));
+
+// const cow = 10;
+// const sheep = [1,2,3]
+// cow.length();
