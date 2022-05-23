@@ -1,19 +1,29 @@
 import "./App.css";
 import FruitCard from "./components/FruitCard";
-
+import fruits from "./fruits.json";
 function App() {
+  // const fruits = [
+  //   { name: "Banana", price: 1, sale: true },
+  //   { name: "Banana", price: 1, sale: false },
+  //   { name: "Pineapple", price: 2, sale: true },
+  //   { name: "Coconut", price: 4, sale: true },
+  //   { name: "Mango", price: 4, sale: true }
+  // ];
   return (
     <div className="App">
       <h1 id="welcome">Hello 59, welcome to React</h1>
-      <FruitCard title="Banana" price="1" description="Yellow, long, sweet" />
-      <FruitCard
-        title="Pineapple"
-        price="2"
-        description="Orange, short, sour"
-      ></FruitCard>
-      <FruitCard title="Coconut" price="4" description="Brown, round, sweet" />
-      <FruitCard title="Mango" price="4" description="Orange, short, sweet" />
-      <FruitCard />
+      {fruits
+        .filter((fruit) => fruit.sale)
+        .map((fruit, index) => {
+          return (
+            <FruitCard
+              key={index}
+              sale={fruit.sale}
+              title={fruit.name}
+              price={fruit.price}
+            />
+          );
+        })}
     </div>
   );
 }

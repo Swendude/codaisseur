@@ -5,8 +5,8 @@ const FruitCard = (props) => {
   return (
     <div className="fruit-card">
       <h3>{props.title}</h3>
-      <p>price: {props.price}€</p>
-      <FruitDescription text={props.description} />
+      {props.sale ? <p>Sale!</p> : <p>Not on sale</p>}
+      <p>price: {props.sale ? props.price / 2 : props.price}€</p>
     </div>
   );
 };

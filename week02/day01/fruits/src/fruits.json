@@ -1,0 +1,7 @@
+[
+  { "name": "Avocado", "price": 1, "sale": true },
+  { "name": "Banana", "price": 1, "sale": false },
+  { "name": "Pineapple", "price": 2, "sale": true },
+  { "name": "Coconut", "price": 4, "sale": true },
+  { "name": "Mango", "price": 4, "sale": true }
+]
