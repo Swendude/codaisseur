@@ -1,11 +1,21 @@
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { selectCounter } from "./store/selectors";
+import { decrement, increment } from "./store/counter/slice";
+import Emotion from "./Emotion";
 import "./App.css";
-import Counter from "./components/Counter";
-import Cows from "./components/Cows";
+
 function App() {
+  const dispatch = useDispatch();
+  const counter = useSelector(selectCounter);
   return (
     <div className="App">
-      <Cows />
-      <Counter />
+      <div>
+        <Emotion />
+      </div>
+      {counter}
+      <button onClick={() => dispatch(increment())}>+</button>
+      <button onClick={() => dispatch(decrement())}>-</button>
     </div>
   );
 }

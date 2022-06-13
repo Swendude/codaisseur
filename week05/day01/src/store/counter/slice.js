@@ -1,21 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const initialState = { value: 0 };
 
 export const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    change: (state, action) => {
-      state.value = state.value + action.payload;
+    increment: (state) => {
+      state.value = state.value + 1;
     },
-
-    setValue: (state, action) => {
-      state.value = action.payload;
-    },
-  },
+    decrement: (state) => {
+      state.value = state.value - 1;
+    }
+  }
 });
-
-export const { change, setValue } = counterSlice.actions;
+// BOILERPLATE
+export const { increment, decrement } = counterSlice.actions;
 
 export default counterSlice.reducer;
