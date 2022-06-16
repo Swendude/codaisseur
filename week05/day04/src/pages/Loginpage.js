@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginThunk } from "../store/auth/actions";
-import { selectToken } from "../store/selectors";
+import { selectToken, selectMe } from "../store/selectors";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const token = useSelector(selectToken);
+  const me = useSelector(selectMe);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,7 +19,7 @@ const LoginPage = () => {
   return (
     <div>
       <h3>Login</h3>
-      {!token ? (
+      {!me ? (
         <div>
           <form onSubmit={handleSubmit}>
             <label>Email</label>
@@ -38,7 +38,7 @@ const LoginPage = () => {
           </form>
         </div>
       ) : (
-        <p>Already logged in</p>
+        <p>Already logged in, hello {me.name}</p>
       )}
     </div>
   );
