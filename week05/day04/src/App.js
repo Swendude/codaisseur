@@ -1,25 +1,19 @@
 import "./App.css";
 import { Routes, Route, NavLink } from "react-router-dom";
-import Homepage from "./pages/Homepage";
-import LoginPage from "./pages/Loginpage";
-import { useEffect } from "react";
-import { bootstrapLoginThunk } from "./store/auth/actions";
-import { useDispatch } from "react-redux";
-function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(bootstrapLoginThunk);
-  }, [dispatch]);
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
 
+function App() {
   return (
     <div className="App">
       <div>
         <NavLink to="/">Home</NavLink>
-        <br />
+      </div>
+      <div>
         <NavLink to="/login">Login</NavLink>
       </div>
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
     </div>

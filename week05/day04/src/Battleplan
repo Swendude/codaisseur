@@ -1,14 +1,10 @@
-Goal: We want our user to be able to authenticate
-Endgame: have a token in our app (probably in the store)
+End goal: Have a auth token in the Redux store X
 
-- Get the credentials from the user (login form) X
-- POST to authentication route (THUNK), returns our token X
-* use the me endpoint to get some information about the user
-- Store it in the store X
-- Get the user information using '/me'
-- Make authenticated request by putting the token in the header
-
-Goal: Save the token in the browser and use it to authenticate the user on a refresh
-- In your login action save the token to the localstorage X
-- Get the token out of localstorage (on first render)  X
-- Do a request with the token to /me X
+Steps:
+- Create a slice to store this information X
+  - initial state: {token: null}
+- Create a login page X
+- Create thunk to make a POST request to get a token x
+  - axios, body, email & password
+- Use the thunk to send the response token to the slice X
+  - Create an action 

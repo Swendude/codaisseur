@@ -1,13 +1,11 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import ReduxThunk from "redux-thunk";
-import reducer from "./rootReducer";
-
-const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
-  ? window.__REDUX_DEVTOOLS_EXTENSION__()
-  : (x) => x;
-
-const enhancer = compose(applyMiddleware(ReduxThunk), devTools);
-
-const store = createStore(reducer, enhancer);
+import { configureStore } from "@reduxjs/toolkit";
+import postReducer from "./posts/slice";
+import authReducer from "./auth/slice";
+const store = configureStore({
+  reducer: {
+    posts: postReducer,
+    auth: authReducer
+  }
+});
 
 export default store;

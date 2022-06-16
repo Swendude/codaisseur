@@ -11,13 +11,26 @@ const initialState = {
   lamps: [false, false, false]
 };
 
+const checkLamps = (lamps) => {
+  if (lamps.filter(lamps).length > 2) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
 export const lampSlice = createSlice({
   name: "lamp",
   initialState,
   reducers: {
     toggle: (state, action) => {
       const index = action.payload;
-      state.lamps[index] = !state.lamps[index];
+
+      const stateCopy = { ...state };
+      stateCopy.lamps[index] = !stateCopy.lamps[index];
+      if (checkLamps(stateCopy.lamps)) {
+        state.lamps[index] = !state.lamps[index];
+      }
     }
   }
 });
