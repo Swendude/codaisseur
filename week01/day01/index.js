@@ -1,47 +1,58 @@
-function double(cow) {
-  return cow * 2;
+// functions
+
+// DRY -> Don't Repeat Yourself
+// WET -> Write Everything Twice
+
+// is y is bigger then add x to y and return the result, else add x to z and return result
+
+function doTheThing(x, y, z) {
+  if (y > z) {
+    console.log(x - y);
+  } else {
+    console.log(x - z);
+  }
 }
 
-const double = (cow) => {
-  return cow * 2;
-};
+function getTheFirstThing(cow) {
+  return cow[0];
+}
 
-// function checkBeer(age, country) {
-//   if (country === "NL" && age >= 18) {
-//     return true;
-//   }
+const result = getTheFirstThing([5, 12, 45]);
+console.log(result);
+// doTheThing(62, 18, 12);
+// // a million a lines of code
 
-//   if (country === "GE" && age >= 17) {
-//     return true;
-//   }
+// doTheThing(64, 18, 12);
 
-//   if (country === "BE" && age >= 16) {
-//     return true;
-//   }
-//   return false;
-// }
-// Object solution
-// const student = {
-//   name: "Seval",
-//   class: 59,
-//   excited: true,
-//   pets: ["Kara", "Mickey"]
-// };
+// // another million lines of code
 
-// const myArray = ["A", "B", "C"];
+// doTheThing(61, 18, 12);
 
-// console.log("Student is: ", student);
-// console.log(student * myArray + 7);
+// // Arrays of objects
+// const farm = [
+//   { name: "Lassy", type: "dog" },
+//   { name: "Bella", type: "cow" },
+//   { name: "Wanda", type: "fish" }
+// ];
 
-// // Array solution
-// const studentArr = ['Seval', 59, true];
+// console.log(farm[0].name);
 
-// console.log(student['name'])
-// console.log(studentArr[0])
+// // OBJECTS
+// const cow = { name: "Bella", age: 1, happy: true };
+// const sameCow = { age: 1, happy: true, name: "Bella" };
+// const worseCow = ["Bella", 1, true];
+// const differentCow = [1, "Bella", true];
+// console.log(cow.age);
+// console.log(cow[1]);
+// console.log(cow["age"]);
+// ARRAYS
+// const animals = ["pig", "cow", "sheep", ["fish", "crab", "seahorse"]];
+// console.log(animals);
 
-// console.log(student['class'])
-// // const sheep = [1, 12, "Swen", "Codaisseur", 42, 82, ['Karla', 'Matias', 'David', 'Maria']]
+// SIMPLE DATATYPES
+// const cow = 10; //number
+// const sheep = false; //boolean
+// const pig = "Hello, world!"; //string
+// const fish = "10"; //string
 
-// // // const pig = sheep[9];
-// // const subArray = sheep[6]
-// // console.log(subArray.length)
+// console.log(42 / 0);
