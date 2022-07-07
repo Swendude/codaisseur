@@ -1,8 +1,6 @@
-
-
-.App {
-  text-align: center;
-  
+.nav {
+  display: flex;
+  gap: 5px;
 }
 
 .App-logo {
