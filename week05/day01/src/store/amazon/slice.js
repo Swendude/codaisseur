@@ -2,8 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   count: 1000,
-  loggedIn: false,
-  bla: "sheep"
+  loggedIn: false
 };
 
 export const amazonSlice = createSlice({
@@ -16,11 +15,12 @@ export const amazonSlice = createSlice({
     decrease: (state) => {
       state.count = state.count - 1;
     },
-    badIdea: (state) => {
-      state.bla = "Cow";
+    change: (state, action) => {
+      console.log(action);
+      state.count = state.count + action.payload;
     }
   }
 });
 
-export const { increase, decrease } = amazonSlice.actions;
+export const { increase, decrease, change } = amazonSlice.actions;
 export default amazonSlice.reducer;

@@ -1,22 +1,29 @@
 import "./App.css";
-import { useState } from "react";
-import { increase, decrease } from "./store/amazon/slice";
+import { increase, decrease, change } from "./store/amazon/slice";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCount } from "./store/selectors";
+import { selectCount, selectCountReadable } from "./store/selectors";
 
 function App() {
   const dispatch = useDispatch();
 
   const count = useSelector(selectCount);
-
+  const readableCount = useSelector(selectCountReadable);
+  const values = [-10, -5, -1, 1, 5, 10];
   return (
     <div className="App">
       <div>
         <p>Products: {count}</p>
+        <p>{readableCount}</p>
       </div>
       <div>
-        <button onClick={() => dispatch(increase())}>+</button>
-        <button onClick={() => dispatch(decrease())}>-</button>
+        {values.map((value) => {
+          return (
+            <button onClick={() => dispatch(change(value))}>{value}</button>
+          );
+        })}
+
+        {/* <button onClick={() => dispatch(change(-1))}>-</button>
+        <button onClick={() => dispatch(change(-5))}>-5</button> */}
       </div>
     </div>
   );
