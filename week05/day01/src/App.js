@@ -1,25 +1,22 @@
-import { useSelector, useDispatch } from "react-redux";
-import { selectCounter } from "./store/selectors";
-import { decrement, increment } from "./store/counter/slice";
-import Emotion from "./Emotion";
-import Lamp from "./Lamp";
 import "./App.css";
+import { useState } from "react";
+import { increase, decrease } from "./store/amazon/slice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCount } from "./store/selectors";
 
 function App() {
   const dispatch = useDispatch();
-  const counter = useSelector(selectCounter);
+
+  const count = useSelector(selectCount);
+
   return (
     <div className="App">
       <div>
-        <Emotion />
+        <p>Products: {count}</p>
       </div>
-      {counter}
-      <button onClick={() => dispatch(increment(1))}>+</button>
-      <button onClick={() => dispatch(decrement(1))}>-</button>
-      <button onClick={() => dispatch(increment(5))}>+5</button>
-      <button onClick={() => dispatch(decrement(9))}>-9</button>
       <div>
-        <Lamp />
+        <button onClick={() => dispatch(increase())}>+</button>
+        <button onClick={() => dispatch(decrease())}>-</button>
       </div>
     </div>
   );

@@ -1,11 +1,9 @@
+// src/store/index.js
 import { configureStore } from "@reduxjs/toolkit";
-import counterSlice from "./counter/slice";
-import lampSlice from "./lamp/slice";
-
+import amazonReducer from "./amazon/slice";
 const store = configureStore({
   reducer: {
-    counter: counterSlice,
-    lamp: lampSlice
+    amazon: amazonReducer
   }
 });
 
