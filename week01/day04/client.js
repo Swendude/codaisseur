@@ -11,17 +11,20 @@
 
 const axios = require("axios");
 
-const double = (x) => x * 2;
-
-const getPikachuArrow = async () => {
+const getPikachu = async () => {
   const response = await axios.get("https://pokeapi.co/api/v2/pokemon/pikachu");
   console.log(response.data);
 };
 
-async function getPikachu() {
-  const response = await axios.get("https://pokeapi.co/api/v2/pokemon/pikachu");
+const getCharacter = async (characterId) => {
+  const response = await axios.get(
+    `http://localhost:4000/characters/${characterId}`
+  );
   console.log(response.data);
-}
-console.log("first");
-getPikachu();
-console.log("second");
+};
+
+getCharacter(13);
+
+// console.log("first");
+// getPikachu();
+// console.log("second");
