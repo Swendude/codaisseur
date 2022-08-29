@@ -13,45 +13,61 @@ module.exports = {
      */
     await queryInterface.bulkInsert("Pets", [
       {
-        name: "Ralph",
+        name: "Lassie",
         kind: "Dog",
         food: 2,
         gender: false,
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
-        name: "Joy",
+        name: "Balto",
         kind: "Dog",
-        food: 1,
-        gender: true,
+        food: 3,
+        gender: false,
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
-        name: "Jooy",
-        kind: "Turtle",
-        food: 1,
-        gender: true,
+        name: "Pooh",
+        kind: "Bear",
+        food: 5,
+        gender: false,
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
-        name: "Fido",
+        name: "Tweety",
         kind: "Bird",
         food: 1,
-        gender: false,
+        gender: true,
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
-        name: "Kazimier",
+        name: "Tom",
         kind: "Cat",
+        food: 3,
+        gender: false,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: "Jerry",
+        kind: "Mouse",
         food: 1,
         gender: false,
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
+      {
+        name: "Maya",
+        kind: "Bee",
+        food: 1,
+        gender: true,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
     ]);
   },
 
@@ -63,5 +79,5 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
     await queryInterface.bulkDelete("Pets", null, {});
-  },
+  }
 };

@@ -6,32 +6,34 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       name: {
         type: Sequelize.STRING,
-        unique: true,
+        unique: true
       },
       kind: {
         type: Sequelize.STRING,
+        allowNull: false
       },
       food: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
+      // true === female
       gender: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-      },
+        type: Sequelize.DATE
+      }
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable("Pets");
-  },
+  }
 };

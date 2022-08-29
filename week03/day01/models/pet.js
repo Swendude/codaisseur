@@ -14,13 +14,13 @@ module.exports = (sequelize, DataTypes) => {
   Pet.init(
     {
       name: { type: DataTypes.STRING, unique: true },
-      kind: DataTypes.STRING,
+      kind: { type: DataTypes.STRING, allowNull: false },
       food: DataTypes.INTEGER,
-      gender: DataTypes.BOOLEAN,
+      gender: DataTypes.BOOLEAN
     },
     {
       sequelize,
-      modelName: "Pet",
+      modelName: "Pet"
     }
   );
   return Pet;
