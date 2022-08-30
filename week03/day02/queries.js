@@ -40,7 +40,7 @@ const createClifford = async (newPet) => {
 const updatePet = async (id) => {
   const petToBeUpdated = await Pet.findByPk(id);
   petToBeUpdated.update({
-    gender: !petToBeUpdated.gender
+    gender: true
   });
 };
 
