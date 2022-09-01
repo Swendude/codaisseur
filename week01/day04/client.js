@@ -23,6 +23,17 @@ const getCharacter = async (characterId) => {
   console.log(response.data);
 };
 
+// ("http://localhost:4000/data/male");
+// ("http://localhost:4000/data/female");
+const getGender = async (patientGender) => {
+  const response = await axios.get(
+    `http://localhost:4000/data/${patientGender}`
+  );
+  console.log(response.data);
+};
+
+getGender("Male");
+
 getCharacter(13);
 
 // console.log("first");
