@@ -1,15 +1,15 @@
 const jwt = require("jsonwebtoken");
 
-const secret = process.env.secret || "f98howfe^@&#oirvhvlk$%&!#%dhv";
+const secret =
+  process.env.JWT_SECRET || "guh597ghksdjrbowruhgfjoiewjoiefwjfoij";
 
+// Data -> JWT
 function toJWT(data) {
-  const new_token = jwt.sign(data, secret, { expiresIn: "2h" });
-  return new_token;
+  return jwt.sign(data, secret, { expiresIn: "2h" });
 }
-
+// JWT -> Data
 function toData(token) {
-  const stored_data = jwt.verify(token, secret);
-  return stored_data;
+  return jwt.verify(token, secret);
 }
 
 module.exports = { toJWT, toData };
