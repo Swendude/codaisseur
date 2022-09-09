@@ -7,3 +7,26 @@ API check-on:
 - Make a request to '/login', include your credentials, and receive a "keycard"
     - store that keycard on the client
 - send the keycard for every request that needs authorization
+
+
+HASH:
+
+hash(1234) => dflihoifh9084yt-2458-458puogf94
+
+
+
+pw: test123
+
+hash(test123) -> 012euydolnopiyr-3foif3-efhf
+
+
+hash(test123) === 012euydolnopiyr-3foif3-efhf
+
+
+
+
+
+
+
+
+

@@ -1,12 +1,5 @@
-.my-text {
-  color: blue;
-  font-size: larger;
-}
-
-.my-box-red {
+.greeting {
   color: red;
-}
-
-.my-box-green {
-  color: green;
+  font-size: x-large;
+  text-decoration: underline;
 }
