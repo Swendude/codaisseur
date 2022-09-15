@@ -1,19 +1,12 @@
 import { useSelector } from "react-redux";
-import { selectPosts, selectCommentsWithUsers } from "../store/selectors";
+import { selectProfile } from "../store/user/selectors";
 
 const HomePage = () => {
-  const posts = useSelector(selectPosts);
-  const commentsWithUsers = useSelector(selectCommentsWithUsers);
-
-  console.log(commentsWithUsers);
+  const profile = useSelector(selectProfile);
   return (
     <div>
-      <h1>Hello Homepage</h1>
-      <ul>
-        {/* {posts.map((post) => {
-          return <li>{post}</li>;
-        })} */}
-      </ul>
+      <h3>Home</h3>
+      {profile ? <p>Hello {profile.name}</p> : <p>Please login!</p>}
     </div>
   );
 };

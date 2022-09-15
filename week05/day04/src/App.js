@@ -1,24 +1,14 @@
 import "./App.css";
 import { Routes, Route, NavLink } from "react-router-dom";
-import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { bootstrapLoginThunk } from "./store/auth/actions";
-
+import HomePage from "./pages/HomePage";
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(bootstrapLoginThunk);
-  }, [dispatch]);
-
   return (
     <div className="App">
+      <h3>Hello, Redux Auth!</h3>
       <div>
         <NavLink to="/">Home</NavLink>
-      </div>
-      <div>
+        <p>---</p>
         <NavLink to="/login">Login</NavLink>
       </div>
       <Routes>
