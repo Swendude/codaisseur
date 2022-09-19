@@ -50,4 +50,4 @@ const double = (x: number): number => {
   return x * 2;
 };
 
-console.log(double(2).length);
+console.log(double(2));
