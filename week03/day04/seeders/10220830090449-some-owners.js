@@ -5,19 +5,19 @@ module.exports = {
     await queryInterface.bulkInsert("Owners", [
       {
         name: "Bob",
-        password: "test123",
+        password: bcrypt.hashSync("test123", 10),
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Alice",
-        password: "test123",
+        password: bcrypt.hashSync("test123", 10),
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Joe",
-        password: "test123",
+        password: bcrypt.hashSync("test123", 10),
         createdAt: new Date(),
         updatedAt: new Date()
       },
