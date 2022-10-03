@@ -1,58 +1,54 @@
-// functions
+// DRY Don't Repeat Yourself
+// WET Write Everything Twice
 
-// DRY -> Don't Repeat Yourself
-// WET -> Write Everything Twice
-
-// is y is bigger then add x to y and return the result, else add x to z and return result
-
-function doTheThing(x, y, z) {
-  if (y > z) {
-    console.log(x - y);
-  } else {
-    console.log(x - z);
-  }
+function divide(cow, sheep) {
+  const result = cow / sheep;
+  return result;
 }
 
-function getTheFirstThing(cow) {
-  return cow[0];
+const divide2 = (cow, sheep) => {
+  const result = cow / sheep;
+  return result;
+};
+
+function sayHi() {
+  console.log("Hi!");
 }
 
-const result = getTheFirstThing([5, 12, 45]);
-console.log(result);
-// doTheThing(62, 18, 12);
-// // a million a lines of code
+const whatever = divide(18, 2);
+const whateverElse = divide(27, 9);
+console.log(divide(whatever, 3));
 
-// doTheThing(64, 18, 12);
+console.log(divide(18, 2));
 
-// // another million lines of code
+// double(18);
 
-// doTheThing(61, 18, 12);
+// a 1000 lines of code
 
-// // Arrays of objects
-// const farm = [
-//   { name: "Lassy", type: "dog" },
-//   { name: "Bella", type: "cow" },
-//   { name: "Wanda", type: "fish" }
-// ];
+// double(9);
 
-// console.log(farm[0].name);
+// a 1000 lines of code
 
-// // OBJECTS
-// const cow = { name: "Bella", age: 1, happy: true };
-// const sameCow = { age: 1, happy: true, name: "Bella" };
-// const worseCow = ["Bella", 1, true];
-// const differentCow = [1, "Bella", true];
-// console.log(cow.age);
-// console.log(cow[1]);
-// console.log(cow["age"]);
-// ARRAYS
-// const animals = ["pig", "cow", "sheep", ["fish", "crab", "seahorse"]];
-// console.log(animals);
+// double(-92);
 
-// SIMPLE DATATYPES
-// const cow = 10; //number
-// const sheep = false; //boolean
-// const pig = "Hello, world!"; //string
-// const fish = "10"; //string
+// const animals = ["sheep", "cow", "pig"];
+// //                 0        1      2
+// const amountOfFood = [1, 2, 6];
+// console.log("A " + animals[1] + " eats " + amountOfFood[1] + " kg per day");
 
-// console.log(42 / 0);
+// const animalsFood = { sheep: 1, cow: 2, pig: 6 };
+// console.log(animalsFood[0]);
+
+const student = {
+  name: "Thanh",
+  school: "Codaisseur",
+  class: 61,
+  present: true,
+  teachers: [
+    { name: "Swen", city: "Utrecht", age: 29 },
+    { name: "Karla", city: "Apeldoorn", age: 27 },
+    { name: "Maria", city: "Amersfoort", age: 26 }
+  ]
+};
+
+// console.log(student.teachers.name);
