@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+}
+
+.fruit-img {
+  width: 200px;
+}
+
+.fruit-card {
+  border: 1px solid black;
+  margin: 5px;
+  padding: 3px;
+}
