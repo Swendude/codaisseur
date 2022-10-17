@@ -28,6 +28,27 @@ module.exports = {
           onDuty: true,
           createdAt: new Date(),
           updatedAt: new Date()
+        },
+        {
+          name: "Oetker",
+          email: "oetker@oetker.com",
+          onDuty: false,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: "Love",
+          email: "love@love.com",
+          onDuty: false,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: "Strange",
+          email: "strange@strange.com",
+          onDuty: true,
+          createdAt: new Date(),
+          updatedAt: new Date()
         }
       ],
       {}
