@@ -1,6 +1,20 @@
 {
   "development": {
-    "url": "postgres://hgihlnec:1QYbq7oOrDdLDp9g7sYt0rHP4JWZlW8N@tai.db.elephantsql.com:5432/hgihlnec",
+    "url": "postgres://mhkbcylc:1-qDTNNi1nscOA7BlTlIZhSbj4SamPlp@lucky.db.elephantsql.com/mhkbcylc",
     "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   }
 }
