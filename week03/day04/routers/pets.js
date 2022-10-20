@@ -1,15 +1,38 @@
 const express = require("express");
+const { toData } = require("../auth/jwt");
 const Pet = require("../models").Pet;
 const { Router } = express;
 const AuthMiddleware = require("../auth/middleware");
 
 const router = new Router();
 
-router.get("/", async (req, res) => {
-  console.log(req.headers);
-  // should return a list of all the pets
-  const allPets = await Pet.findAll();
+// Middlewares can modify a request!!
+// const myOwnMiddleWare = (req, res, next) => {
+//   req.myAwesomeKey = "Hello class 62";
+//   next();
+// };
+
+router.get("/", AuthMiddleware, async (req, res) => {
+  // const auth = req.headers.authorization;
+
+  // if (!auth) {
+  //   res.status(401).send("Please send a valid token!");
+  //   return;
+  // }
+
+  // if (auth.split(" ")[0] === "Bearer" && auth.split(" ")[1]) {
+  //   try {
+  //     const data = toData(auth.split(" ")[1]);
+  // console.log("This token belongs to:", req.user.name);
+  console.log(req.myAwesomeKey);
+  const allPets = await Pet.findAll({ where: { OwnerId: req.user.id } });
   res.send(allPets);
+  //   } catch (e) {
+  //     res.status(400).send("Invalid JWT token");
+  //   }
+  // }
+
+  // should return a list of all the pets
 });
 
 router.get("/:id", async (req, res) => {
@@ -22,7 +45,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", AuthMiddleware, async (req, res) => {
+router.post("/", async (req, res) => {
   const { name, kind, breed, gender, food } = req.body;
   if (name && kind && breed && food) {
     try {
@@ -32,7 +55,7 @@ router.post("/", AuthMiddleware, async (req, res) => {
         breed: breed,
         gender: gender,
         food: food,
-        OwnerId: req.user.id
+        OwnerId: 1
       });
       res.status(201).send(newPet);
     } catch (error) {

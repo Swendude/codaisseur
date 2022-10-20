@@ -1,36 +1,33 @@
 const express = require("express");
-const Owner = require("../models").Owner;
-const router = require("./pets");
-const { toJWT, toData } = require("../auth/jwt");
-const bcrypt = require("bcrypt");
-
+const { toJwt } = require("../auth/jwt");
 const { Router } = express;
+const Owner = require("../models").Owner;
 
-router.post("/signup", async (req, res, next) => {
-  const { username, password } = req.body;
-  const newOwner = await Owner.create({
-    name: username,
-    password: bcrypt.hashSync(password, 10)
-  });
-  res.send(newOwner);
-});
+const router = new Router();
 
-router.post("/login", async (req, res, next) => {
-  const { username, password } = req.body;
-  const ownerToLogin = await Owner.findOne({ where: { name: username } });
-  if (ownerToLogin) {
-    if (bcrypt.compareSync(password, ownerToLogin.password)) {
-      //succes
-      const data = { ownerId: ownerToLogin.id };
-      console.log("Data", data);
-      const token = toJWT(data);
-      res.send({ token: token });
-    } else {
-      res.status(400).send("Username or password not found");
-    }
-  } else {
-    res.status(400).send("Username or password not found *");
+router.post("/login", async (req, res) => {
+  // get the user info from the body (name, password)
+  const { name, password } = req.body;
+  if (!name || !password) {
+    res.status(400).send("Please provide valid information");
+    return;
   }
+  // compare that info to check if the user exists in the db
+  const ownerToAuthenicate = await Owner.findOne({ where: { name: name } });
+
+  if (!ownerToAuthenicate) {
+    res.status(400).send("Password or name! is incorrect");
+    return;
+  }
+  // check the password
+  if (password !== ownerToAuthenicate.password) {
+    res.status(400).send("Password! or name is incorrect");
+    return;
+  }
+  // generate a token
+  const token = toJwt({ ownerId: ownerToAuthenicate.id });
+  // send the token back
+  res.send({ token: token });
 });
 
 module.exports = router;
