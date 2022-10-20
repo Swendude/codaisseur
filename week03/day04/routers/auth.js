@@ -2,7 +2,7 @@ const express = require("express");
 const { toJwt } = require("../auth/jwt");
 const { Router } = express;
 const Owner = require("../models").Owner;
-
+const bcrypt = require("bcrypt");
 const router = new Router();
 
 router.post("/login", async (req, res) => {
@@ -20,7 +20,7 @@ router.post("/login", async (req, res) => {
     return;
   }
   // check the password
-  if (password !== ownerToAuthenicate.password) {
+  if (!bcrypt.compareSync(password, ownerToAuthenicate.password)) {
     res.status(400).send("Password! or name is incorrect");
     return;
   }
