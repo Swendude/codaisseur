@@ -1,18 +1,25 @@
 const axios = require("axios");
 
-const getAllPokemon = async () => {
-  const response = await axios.get("https://pokeapi.co/api/v2/pokemon");
-  // console.log(response.data);
-  console.log("Pokemon");
+const getAllAnimals = async () => {
+  const response = await axios.get("http://localhost:4000/animals");
+  console.log(response.data);
 };
 
-const getGoogle = async () => {
-  const response = await axios.get("https://www.google.com");
-  // console.log(response.data);
-  console.log("google");
+const getAnimalById = async (animalId) => {
+  const response = await axios.get(`http://localhost:4000/animals/${animalId}`);
+  const animalById = response.data;
+  console.log(animalById);
 };
 
-getGoogle();
-getAllPokemon();
+const getAnimalsThatEatMore = async (foodValue) => {
+  const response = await axios.get(
+    `http://localhost:4000/animals/food/${foodValue}`
+  );
+  const allTheAnimals = response.data;
+  const females = allTheAnimals.filter((animal) => animal.isFemale);
+  console.log(females);
+};
 
-// console.log("Hello, world!");
+// getAllAnimals();
+// getAnimalById(2);
+getAnimalsThatEatMore(2);

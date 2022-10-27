@@ -1,0 +1,72 @@
+[
+  {
+    "id": 4,
+    "name": "Lassie",
+    "kind": "Dog",
+    "food": 2,
+    "isFemale": false
+  },
+  {
+    "id": 2,
+    "name": "Balto",
+    "kind": "Dog",
+    "food": 3,
+    "isFemale": false
+  },
+  {
+    "id": 1,
+    "name": "Scooby-Doo",
+    "kind": "Dog",
+    "food": 10,
+    "isFemale": false
+  },
+  {
+    "id": 8,
+    "name": "Lady",
+    "kind": "Dog",
+    "food": 2,
+    "isFemale": true
+  },
+  {
+    "id": 52,
+    "name": "Pooh",
+    "kind": "Bear",
+    "food": 5,
+    "isFemale": false
+  },
+  {
+    "id": 12,
+    "name": "Tweety",
+    "kind": "Bird",
+    "food": 1,
+    "isFemale": true
+  },
+  {
+    "id": 18,
+    "name": "Roadrunner",
+    "kind": "Bird",
+    "food": 5,
+    "isFemale": true
+  },
+  {
+    "id": 19,
+    "name": "Tom",
+    "kind": "Cat",
+    "food": 3,
+    "isFemale": false
+  },
+  {
+    "id": 22,
+    "name": "Jerry",
+    "kind": "Mouse",
+    "food": 1,
+    "isFemale": false
+  },
+  {
+    "id": 27,
+    "name": "Maya",
+    "kind": "Bee",
+    "food": 1,
+    "isFemale": true
+  }
+]
