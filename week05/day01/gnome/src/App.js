@@ -5,14 +5,22 @@ import Counter from "./components/Counter";
 import { useSelector, useDispatch } from "react-redux";
 import { selectBikes } from "./store/bikes/selectors";
 import { toggleFavorite, deleteBike } from "./store/bikes/slice";
+import { receivePokemon } from "./store/pokemons/slice";
+import axios from "axios";
+import { getPokemons, getPokemonByName } from "./store/pokemons/thunks";
 
 function App() {
   const dispatch = useDispatch();
-  const bikes = useSelector(selectBikes);
+  // const bikes = useSelector(selectBikes);
+  useEffect(() => {
+    dispatch(getPokemons());
+    dispatch(getPokemonByName("pikachu"));
+  }, [dispatch]);
+
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Hello, Redux!</h1>
+        {/* <h1>Hello, Redux!</h1>
         <Counter />
         <Buttons />
         <h1>Hello, Bikes!</h1>
@@ -26,7 +34,7 @@ function App() {
             </div>
             <button onClick={() => dispatch(deleteBike(bike.id))}>❌</button>
           </div>
-        ))}
+        ))} */}
       </header>
     </div>
   );
