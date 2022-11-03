@@ -1,6 +1,5 @@
-.nav {
-  display: flex;
-  gap: 5px;
+.App {
+  text-align: center;
 }
 
 .App-logo {
@@ -38,6 +37,12 @@
   }
 }
 
-a.active {
-  font-weight: bold;
+.active {
+  background-color: purple;
+  color: green;
+}
+
+.greeter {
+  background-color: red;
+  color: white;
 }
