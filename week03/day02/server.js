@@ -23,6 +23,32 @@ app.get("/pets/:id", async (req, res) => {
   }
 });
 
+app.post("/pets", async (req, res) => {
+  const { name, kind, food, gender } = req.body;
+  if (!name) {
+    res.status(400).send("The field name is required on Pets");
+    return;
+  }
+  if (!kind) {
+    res.status(400).send("The field kind is required on Pets");
+    return;
+  }
+  try {
+    const newPet = await Pet.create({
+      name: name,
+      kind: kind,
+      food: food,
+      gender: gender
+    });
+
+    res.status(201).send(newPet);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Something went wrong");
+    return;
+  }
+});
+
 app.listen(4000, () => {
   console.log("Listening on port 4000");
 });
