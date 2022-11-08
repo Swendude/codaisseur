@@ -17,9 +17,9 @@ module.exports = {
         kind: "Dog",
         food: 2,
         gender: false,
+        OwnerId: 1,
         createdAt: new Date(),
-        updatedAt: new Date(),
-        OwnerId: 4
+        updatedAt: new Date()
       },
       {
         name: "Balto",
@@ -27,15 +27,13 @@ module.exports = {
         food: 3,
         gender: false,
         createdAt: new Date(),
-        updatedAt: new Date(),
-        OwnerId: 1
+        updatedAt: new Date()
       },
       {
         name: "Pooh",
         kind: "Bear",
         food: 5,
         gender: false,
-        OwnerId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -44,7 +42,6 @@ module.exports = {
         kind: "Bird",
         food: 1,
         gender: true,
-        OwnerId: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -53,7 +50,6 @@ module.exports = {
         kind: "Cat",
         food: 3,
         gender: false,
-        OwnerId: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -62,7 +58,6 @@ module.exports = {
         kind: "Mouse",
         food: 1,
         gender: false,
-        OwnerId: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -71,7 +66,6 @@ module.exports = {
         kind: "Bee",
         food: 1,
         gender: true,
-        OwnerId: null,
         createdAt: new Date(),
         updatedAt: new Date()
       }

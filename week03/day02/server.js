@@ -1,5 +1,6 @@
 const express = require("express");
 const Pet = require("./models").Pet;
+const Owner = require("./models").Owner;
 
 const app = express();
 app.use(express.json());
@@ -12,32 +13,14 @@ app.get("/pets", async (req, res) => {
 
 app.get("/pets/:id", async (req, res) => {
   // Should return a specific pet
-  const specificPet = await Pet.findByPk(req.params.id);
+  const specificPet = await Pet.findByPk(req.params.id, {
+    include: [Owner]
+  });
   if (specificPet) {
     res.send(specificPet);
   } else {
     res.status(404).send("Pet with that ID not found");
   }
-});
-
-app.post("/pets", async (req, res) => {
-  console.log("POST /pets got ", req.body);
-  const { name, kind, breed, gender, food } = req.body;
-  if (name && kind && breed && food) {
-    try {
-      const newPet = await Pet.create(req.body);
-      res.status(201).send(newPet);
-    } catch (error) {
-      res.status(500).send("Something went wrong");
-    }
-  } else {
-    res.status(400).send("Missing attributes for pet");
-  }
-});
-
-app.post("/parrot", async (req, res) => {
-  console.log(req.body);
-  res.send(req.body);
 });
 
 app.listen(4000, () => {
