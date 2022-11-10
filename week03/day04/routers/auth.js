@@ -1,7 +1,7 @@
 const express = require("express");
 const User = require("../models").User;
 const { toJWT } = require("../auth/jwt");
-
+const bcrypt = require("bcrypt");
 const { Router } = express;
 
 const router = new Router();
@@ -16,7 +16,7 @@ router.post("/login", async (req, res) => {
     return;
   }
   // Check if the password is correct
-  if (userToLogin.password === password) {
+  if (bcrypt.compareSync(password, userToLogin.password)) {
     // Generate a token
     const token = toJWT({ userId: userToLogin.id });
     res.send({ token: token });
