@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Pet.belongsTo(models.Owner);
+      Pet.belongsTo(models.User);
     }
   }
   Pet.init(

@@ -1,5 +1,5 @@
+const User = require("../models").User;
 const { toData } = require("./jwt");
-const Owner = require("../models").Owner;
 
 async function auth(req, res, next) {
   const auth =
@@ -7,9 +7,10 @@ async function auth(req, res, next) {
   if (auth && auth[0] === "Bearer" && auth[1]) {
     try {
       const data = toData(auth[1]);
-      const user = await Owner.findByPk(data.ownerId);
+      const user = await User.findByPk(data.userId);
       if (!user) {
-        res.status(404).send("No user found");
+        res.status(404).send("User for token not found");
+        return;
       } else {
         req.user = user;
         next();
@@ -21,7 +22,7 @@ async function auth(req, res, next) {
     }
   } else {
     res.status(401).send({
-      message: "Please supply some valid credentials"
+      message: "Please supply a valid token"
     });
   }
 }

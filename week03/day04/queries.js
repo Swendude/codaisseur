@@ -1,8 +1,6 @@
 // Retrieve all the pets
 const Pet = require("./models").Pet;
 const Owner = require("./models").Owner;
-const db = require("./models");
-
 const getPetById = async (id) => {
   const tweety = await Pet.findByPk(id, { include: [Owner] });
   console.log(tweety.toJSON());
@@ -15,40 +13,41 @@ const getOwnerById = async (id) => {
   console.log(owner.toJSON());
 };
 
-getOwnerById(1);
-// const getAllThePets = async () => {
-//   const allThePets = await Pet.findAll({ raw: true });
-//   console.log(allThePets);
-// };
+getOwnerById(4);
 
-// const getTweety = async () => {
-//   const tweety = await Pet.findByPk(10, { raw: true });
-//   console.log(tweety);
-// };
+const getAllThePets = async () => {
+  const allThePets = await Pet.findAll({ raw: true });
+  console.log(allThePets);
+};
 
-// const getDogs = async () => {
-//   const dogs = await Pet.findAll({
-//     where: { kind: "Dog", gender: true },
-//     raw: true
-//   });
-//   console.log(dogs);
-// };
+const getTweety = async () => {
+  const tweety = await Pet.findByPk(10, { raw: true });
+  console.log(tweety);
+};
 
-// const createClifford = async (newPet) => {
-//   await Pet.create(newPet);
-// };
+const getDogs = async () => {
+  const dogs = await Pet.findAll({
+    where: { kind: "Dog", gender: true },
+    raw: true
+  });
+  console.log(dogs);
+};
 
-// const updatePet = async (id) => {
-//   const petToBeUpdated = await Pet.findByPk(id);
-//   petToBeUpdated.update({
-//     gender: true
-//   });
-// };
+const createClifford = async (newPet) => {
+  await Pet.create(newPet);
+};
 
-// const killPet = async (id) => {
-//   const petToBeKilled = await Pet.findByPk(id);
-//   petToBeKilled.destroy();
-// };
+const updatePet = async (id) => {
+  const petToBeUpdated = await Pet.findByPk(id);
+  petToBeUpdated.update({
+    gender: true
+  });
+};
+
+const killPet = async (id) => {
+  const petToBeKilled = await Pet.findByPk(id);
+  petToBeKilled.destroy();
+};
 
 // getAllThePets();
 // getTweety();

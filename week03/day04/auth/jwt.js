@@ -1,16 +1,20 @@
-// Create a machine that can read and write to tokens
 const jwt = require("jsonwebtoken");
 
-const secret = process.env.JWT_SECRET || "43094327rcuf39yf38hfpgh^32e043efhdf";
+const secret = process.env.JWT_SECRET || "o0r238yf238yhfldj08^@644pjf0dfh";
 
-const toJwt = (data) => {
-  const token = jwt.sign(data, secret, { expiresIn: "2h" });
-  return token;
-};
+function toJWT(data) {
+  return jwt.sign(data, secret, { expiresIn: "2h" });
+}
 
-const toData = (token) => {
-  const data = jwt.verify(token, secret);
-  return data;
-};
+function toData(token) {
+  return jwt.verify(token, secret);
+}
 
-module.exports = { toJwt, toData };
+module.exports = { toJWT, toData };
+// const myToken = toJWT({ message: "Hello from token! Hello from token!" });
+// console.log(myToken);
+
+// secret = "swen";
+
+// const myData = toData(myToken);
+// console.log(myData);

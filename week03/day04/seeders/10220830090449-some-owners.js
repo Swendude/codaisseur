@@ -1,30 +1,34 @@
 "use strict";
-const bcrypt = require("bcrypt");
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert("Owners", [
+    await queryInterface.bulkInsert("Users", [
       {
         name: "Bob",
-        password: bcrypt.hashSync("test123", 10),
+        email: "b@b.com",
+        password: "bob123",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Alice",
-        password: bcrypt.hashSync("test123", 10),
+        email: "a@a.com",
+        password: "alice123",
+
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Joe",
-        password: bcrypt.hashSync("test123", 10),
+        email: "jo@jo.com",
+        password: "joe123",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Jane",
-        password: bcrypt.hashSync("test123", 10),
+        email: "ja@ja.com",
+        password: "jane123",
         createdAt: new Date(),
         updatedAt: new Date()
       }
@@ -32,6 +36,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete("Owners", null, {});
+    await queryInterface.bulkDelete("Users", null, {});
   }
 };

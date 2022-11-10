@@ -1,33 +1,28 @@
 const express = require("express");
-const { toJwt } = require("../auth/jwt");
+const User = require("../models").User;
+const { toJWT } = require("../auth/jwt");
+
 const { Router } = express;
-const Owner = require("../models").Owner;
-const bcrypt = require("bcrypt");
+
 const router = new Router();
 
 router.post("/login", async (req, res) => {
-  // get the user info from the body (name, password)
-  const { name, password } = req.body;
-  if (!name || !password) {
-    res.status(400).send("Please provide valid information");
-    return;
-  }
-  // compare that info to check if the user exists in the db
-  const ownerToAuthenicate = await Owner.findOne({ where: { name: name } });
+  const { email, password } = req.body;
+  // Check if the user exists
+  const userToLogin = await User.findOne({ where: { email: email } });
 
-  if (!ownerToAuthenicate) {
-    res.status(400).send("Password or name! is incorrect");
+  if (!userToLogin) {
+    res.status(400).send("User with that password and/or email not found");
     return;
   }
-  // check the password
-  if (!bcrypt.compareSync(password, ownerToAuthenicate.password)) {
-    res.status(400).send("Password! or name is incorrect");
+  // Check if the password is correct
+  if (userToLogin.password === password) {
+    // Generate a token
+    const token = toJWT({ userId: userToLogin.id });
+    res.send({ token: token });
     return;
   }
-  // generate a token
-  const token = toJwt({ ownerId: ownerToAuthenicate.id });
-  // send the token back
-  res.send({ token: token });
+  res.status(400).send("User with that password and/or email not found!");
 });
 
 module.exports = router;
