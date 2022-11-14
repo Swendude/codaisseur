@@ -1,53 +1,66 @@
-let cow: boolean = true;
-let sheep: number = 1;
-let pig: string = "Hello, world";
+let x: number = 5;
+x = 7;
+// x = true;
 
-let transaction: number[] = [42, 12, 83, 9];
+let isFemale: boolean = true;
+isFemale = false;
 
-interface Engine {
-  cc: number;
-  cylinders: number;
-  type: string;
-}
+let myName: string = "swen";
 
-interface Vehicle {
-  brand: string;
-  model: string;
-}
+let studentNames: (string | boolean)[] = ["Agnieszka", "Ynte", "Xiaodan"];
+studentNames = [...studentNames, true];
 
-interface Bike extends Vehicle {
-  gears: number;
-  wheels: number;
-  racing: boolean;
-}
-
-interface Car extends Vehicle {
-  gears: number;
-  wheels: number;
-  engine: Engine;
-  price?: number;
-}
-
-let vehicles: Vehicle[] = [];
-
-let car: Car = {
-  brand: "Fiat",
-  model: "126",
-  gears: 4,
-  wheels: 4,
-  engine: {
-    cc: 650,
-    cylinders: 4,
-    type: "four stroke"
+function add(x: number | string, y: number): string {
+  if (typeof x === "number") {
+    return (x + y).toString();
+  } else {
+    return x + y;
   }
+}
+
+const specialArray = [add, add];
+
+const arrowAdd = (x: number, y: number): number => {
+  return x + y;
 };
 
-const showCarName = (c: Car): string => {
-  return c.brand + " " + c.model;
+type Title = "PHD" | "MD" | "Dr" | "Engineer";
+
+interface Doctor {
+  name: string;
+  titles: Title[];
+  age: number;
+  speciality: string;
+}
+
+type Animal = "Sheep" | "Cow" | "Horse";
+
+interface AnimalDoctor extends Doctor {
+  animal: Animal;
+}
+
+const doctors: (Doctor | AnimalDoctor)[] = [
+  {
+    name: "Doolittle",
+    age: 42,
+    titles: ["PHD"],
+    speciality: "Animals",
+    animal: "Horse"
+  },
+  {
+    name: "Pepper",
+    titles: ["Dr", "MD", "PHD"],
+    age: 42,
+    speciality: "Plastic surgery"
+  }
+];
+
+const makeDoctorName = (d: Doctor | AnimalDoctor) => {
+  return `${d.name}, ${d.titles.join(", ")}`;
 };
 
-const double = (x: number): number => {
-  return x * 2;
+const makeHello = <T extends { name: string }>(d: T) => {
+  return `Hello ${d.name}`;
 };
 
-console.log(double(2));
+console.log(makeDoctorName(doctors[1]));
