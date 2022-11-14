@@ -43,4 +43,4 @@
 ## Resources
 
 - https://www.youtube.com/c/MattPocockUk/videos
--
+- https://www.typescriptlang.org/docs/handbook/
