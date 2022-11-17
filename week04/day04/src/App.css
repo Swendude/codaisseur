@@ -1,5 +1,3 @@
-.greeting {
-  color: red;
-  font-size: x-large;
-  text-decoration: underline;
+p {
+  border: 4px solid blue;
 }
