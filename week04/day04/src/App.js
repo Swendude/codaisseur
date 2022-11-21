@@ -24,15 +24,17 @@ const AppButton = styled.button`
 `;
 
 function App() {
+  const dataset = [100, 250, 350];
+  const labels = [1990, 2000, 2010];
   return (
     <div className="App">
-      <h1>Hello Styled Components</h1>
-      <RedText>Today we are learning about styling our components</RedText>
-      <BoldRedText>
-        Today we are learning about styling our components
-      </BoldRedText>
-      <AppButton role="secondary">Click me!</AppButton>
-      <AppButton>Click me!</AppButton>
+      <svg width={500} height={500} viewBox={"0 0 500 -500"}>
+        {dataset.map((datapoint, i) => {
+          return (
+            <circle cx={i * 100 + 50} cy={datapoint} r={50} fill={"red"} />
+          );
+        })}
+      </svg>
     </div>
   );
 }
