@@ -1,8 +1,12 @@
-const Teacher = require("./models").teacher;
+const Users = require("./models").User;
+const Products = require("./models").Product;
 
-const getAllTeachers = async () => {
-  const allTeachers = await Teacher.findAll();
-  console.log(allTeachers);
+const getAllUsers = async () => {
+  const allUsers = await Users.findAll({
+    include: ["purchases"]
+    // raw: true
+  });
+  console.log(allUsers[0].dataValues);
 };
 
-getAllTeachers();
+getAllUsers();
